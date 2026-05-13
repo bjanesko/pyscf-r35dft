@@ -85,7 +85,7 @@ except (ImportError, OSError):
 from pyscf.dft.gen_grid import BLKSIZE, NBINS, CUTOFF, make_mask
 from pyscf.dft import xc_deriv
 from pyscf import __config__
-from r35dft import r35work # BGJ 
+from pyscf.r35dft import r35work # BGJ 
 
 libdft = lib.load_library('libdft')
 OCCDROP = getattr(__config__, 'dft_numint_occdrop', 1e-12)

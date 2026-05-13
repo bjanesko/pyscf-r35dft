@@ -25,7 +25,7 @@ import numpy
 from pyscf import lib
 from pyscf.lib import logger
 from pyscf.scf import hf, uhf
-from r35dft import rks,r35work 
+from pyscf.r35dft import rks,r35work 
 
 def get_veff(ks, mol=None, dm=None, dm_last=0, vhf_last=0, hermi=1):
     '''Coulomb + XC functional for UKS.  See pyscf/dft/rks.py
@@ -49,6 +49,9 @@ def get_veff(ks, mol=None, dm=None, dm_last=0, vhf_last=0, hermi=1):
     else:
         max_memory = ks.max_memory - lib.current_memory()[0]
         if ks.molr35 is None and ks.r35beta is not None:
+          ks.r35beta = r35work._initialize_r35beta(ks.r35beta)
+          logger.debug(ks,'R35 beta = %s', ks.r35beta)
+          assert isinstance(ks.r35beta,list)
           ks.molr35 = r35work.stretchAOs(mol,ks.r35beta[0])
         n, exc, vxc = ni.nr_uks(mol, ks.grids, ks.xc, dm, max_memory=max_memory, molr35=ks.molr35,r35beta=ks.r35beta)
         if ks.nlc:

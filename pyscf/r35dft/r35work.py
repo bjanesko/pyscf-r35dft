@@ -7,6 +7,21 @@ from scipy import linalg
 from scipy.special import lambertw, erf, erfc 
 from pyscf import gto 
 
+# Initialize the r35beta array based on requested functional 
+def _initialize_r35beta(r35betain):
+    if isinstance(r35betain,list):
+        return r35betain 
+    # Default value is for m11po 
+    r35beta= [0.2, 0.6,
+         -0.170265960, 0.32610431 , 0,            0.173830277, -0.337808383,
+          0,          -0.002379857, 2.026450260, -0.943023593, -4.195668115]
+    if isinstance(r35betain,str):
+        if('B05' in r35betain.upper()): # Unmodified B05 correlation 
+          r35beta= [0.2, 0.6,
+            0.,0.,0.,0.,0.,
+            0.5,0.,0.,0.,0.]
+    return r35beta 
+
 # Overlap-R35 alternative to M11plus Coulomb-R35 energy
 # M11plus Coulomb-R35 energy is eq 7 of M11plus paper 
 # Input: Spin-polarized density on grid and R35 exponent beta 

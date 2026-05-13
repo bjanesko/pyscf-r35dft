@@ -39,8 +39,8 @@ try:
 except (ImportError, OSError):
     pass
 #from pyscf.dft import xc
-from r35dft import rks
-from r35dft import uks 
+from pyscf.r35dft import rks
+from pyscf.r35dft import uks 
 # NYI 
 #from pyscf.dft import roks 
 #from pyscf.dft import gks
@@ -52,7 +52,7 @@ from pyscf.dft import gen_grid as grid
 from pyscf.dft import radi
 from pyscf.dft import numint
 from pyscf.df import density_fit
-from r35dft.rks import KohnShamDFT
+from pyscf.r35dft.rks import KohnShamDFT
 from pyscf.dft.gen_grid import sg1_prune, nwchem_prune, treutler_prune, \
         stratmann, original_becke, Grids
 from pyscf.dft.radi import BRAGG_RADII, COVALENT_RADII, \
