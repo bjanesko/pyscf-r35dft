@@ -15,17 +15,29 @@ Int
 
 Install
 -------
-* Install to python site-packages folder
+* Recommended install is in a python virtual environment created in /your/top/dir/
 ```
-pip install git+https://github.com/bjanesko/pyscf-r35dft 
+python3 -m venv venv
+```
+To enter the virtual environment, type:
+
+```
+source /your/top/dir/venv/bin/activate
 ```
 
-* Install in a custom folder for development
+Recommended install in virtual environment
 ```
-git clone https://github.com/bjanesko/pyscf-r35dft /home/abc/local/path
+pip install pyscf
+pip install git+https://github.com/bjanesko/pyscf-r35dft
+```
 
-# Set pyscf extended module path
-echo 'export PYSCF_EXT_PATH=/home/abc/local/path:$PYSCF_EXT_PATH' >> ~/.bashrc
+To use M11po, download and compile the libxc-r35dft fork of libxc, using the
+standard autoreconf procedure, then copy the library to your new pyscf environment 
+```
+./configure --prefix=/your/libxc/install/dir --enable-shared
+make
+make install
+cp /your/libxc/install/dir/lib/libxc.so /your/top/dir/venv/lib/python3.10/site-packages/pyscf/lib/deps/lib/
 ```
 
 You can find more details of extended modules in the document
