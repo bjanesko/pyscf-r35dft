@@ -50,7 +50,7 @@ from pyscf.r35dft import uks
 #from pyscf.dft import dks
 from pyscf.dft import gen_grid as grid
 from pyscf.dft import radi
-from pyscf.dft import numint
+from pyscf.r35dft import numint
 from pyscf.df import density_fit
 from pyscf.r35dft.rks import KohnShamDFT
 from pyscf.dft.gen_grid import sg1_prune, nwchem_prune, treutler_prune, \
@@ -73,7 +73,7 @@ DFT = KS
 def RKS(mol, xc='LDA,VWN',r35beta='None'):
     if mol.spin == 0:
         #if not mol.symmetry or mol.groupname == 'C1':
-            return rks.RKS(mol, xc)
+            return rks.RKS(mol, xc,r35beta)
         #else:
         #    return rks_symm.RKS(mol, xc)
     else:
@@ -90,9 +90,10 @@ RKS.__doc__ = rks.RKS.__doc__
 
 def UKS(mol, xc='LDA,VWN',r35beta='None'):
     if not mol.symmetry or mol.groupname == 'C1':
-        return uks.UKS(mol, xc)
+        return uks.UKS(mol, xc, r35beta)
     else:
-        return uks_symm.UKS(mol, xc)
+        sys.exit('r35dft spatial symmetry nyi')
+        #return uks_symm.UKS(mol, xc, r35beta)
 UKS.__doc__ = uks.UKS.__doc__
 
 #def GKS(mol, xc='LDA,VWN'):
