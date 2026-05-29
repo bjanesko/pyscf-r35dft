@@ -264,7 +264,7 @@ def get_omELF(rho,l=1,coords=None):
 def get_enga(rho,beta):
   a01 = (4*math.pi/3)**(2./3.)
   a11 = 4.869
-  b=[[1,1.3493,0],[0.893696,3.642,0],[0.889355,0,0.06202]]
+  b=[[1,1.3493,0],[0.893686,3.642,0],[0.889355,0,0.06202]]
   cl = -(3/4)*(6/math.pi)**(1./3.)
   y2fac = beta**(-1) *(4./3.*math.pi)**(2./3.)
   nspin,nrho,ngrid = rho.shape 
