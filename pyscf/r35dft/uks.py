@@ -49,6 +49,10 @@ def get_veff(ks, mol=None, dm=None, dm_last=0, vhf_last=0, hermi=1):
     else:
         max_memory = ks.max_memory - lib.current_memory()[0]
         if ks.molr35 is None and ks.r35beta is not None:
+          if ks.r35beta == 'Default':
+            ks.r35beta=[0.2] # Default choice for M11po
+            logger.debug(ks,'R35 beta = %s', ks.r35beta)
+          assert isinstance(ks.r35beta,list)
           ks.r35beta = r35work._initialize_r35beta(ks.r35beta)
           logger.debug(ks,'R35 beta = %s', ks.r35beta)
           assert isinstance(ks.r35beta,list)

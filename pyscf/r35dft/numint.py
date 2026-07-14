@@ -211,7 +211,7 @@ def eval_rho(mol, ao, dm, non0tab=None, xctype='LDA', hermi=0,
         print('eval_rho called with xctype = %s' % xctype)
         print('eval_rho called by %s' % caller_name())  # BGJ
     xctype = xctype.upper()
-    if xctype == 'LDA' or xctype == 'HF':
+    if r35beta is None and (xctype == 'LDA' or xctype == 'HF'):
         ngrids, nao = ao.shape
     else:
         ngrids, nao = ao[0].shape

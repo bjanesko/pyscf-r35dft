@@ -41,8 +41,9 @@ except (ImportError, OSError):
 #from pyscf.dft import xc
 from pyscf.r35dft import rks
 from pyscf.r35dft import uks 
+
 # NYI 
-#from pyscf.dft import roks 
+#from pyscf.r35dft import roks 
 #from pyscf.dft import gks
 #from pyscf.dft import rks_symm
 #from pyscf.dft import uks_symm
